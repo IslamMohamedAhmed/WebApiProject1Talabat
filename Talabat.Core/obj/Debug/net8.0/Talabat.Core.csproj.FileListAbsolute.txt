@@ -1,0 +1,12 @@
+E:\WebApiProject\Talabat.API.Solution\Talabat.Core\bin\Debug\net8.0\Talabat.Core.deps.json
+E:\WebApiProject\Talabat.API.Solution\Talabat.Core\bin\Debug\net8.0\Talabat.Core.dll
+E:\WebApiProject\Talabat.API.Solution\Talabat.Core\bin\Debug\net8.0\Talabat.Core.pdb
+E:\WebApiProject\Talabat.API.Solution\Talabat.Core\obj\Debug\net8.0\Talabat.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\WebApiProject\Talabat.API.Solution\Talabat.Core\obj\Debug\net8.0\Talabat.Core.AssemblyInfoInputs.cache
+E:\WebApiProject\Talabat.API.Solution\Talabat.Core\obj\Debug\net8.0\Talabat.Core.AssemblyInfo.cs
+E:\WebApiProject\Talabat.API.Solution\Talabat.Core\obj\Debug\net8.0\Talabat.Core.csproj.CoreCompileInputs.cache
+E:\WebApiProject\Talabat.API.Solution\Talabat.Core\obj\Debug\net8.0\Talabat.Core.dll
+E:\WebApiProject\Talabat.API.Solution\Talabat.Core\obj\Debug\net8.0\refint\Talabat.Core.dll
+E:\WebApiProject\Talabat.API.Solution\Talabat.Core\obj\Debug\net8.0\Talabat.Core.pdb
+E:\WebApiProject\Talabat.API.Solution\Talabat.Core\obj\Debug\net8.0\ref\Talabat.Core.dll
+E:\WebApiProject\Talabat.API.Solution\Talabat.Core\obj\Debug\net8.0\Talabat.Core.csproj.AssemblyReference.cache
