@@ -1,5 +1,10 @@
 
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Talabat.API.Errors;
+using Talabat.API.Extensions;
+using Talabat.API.MiddleWares;
+using Talabat.API.Profiles;
 using Talabat.Core.Repositories;
 using Talabat.Repository;
 using Talabat.Repository.Data;
@@ -23,7 +28,7 @@ namespace Talabat.API
             {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
-            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            builder.Services.AddApplicationService();
             #endregion
             var app = builder.Build();
 
@@ -37,7 +42,8 @@ namespace Talabat.API
                 await DbContactor.Database.MigrateAsync();
                 await SeedG01DbContext.SeedAsync(DbContactor);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 var Logger = LoggerFactory.CreateLogger<Program>();
                 Logger.LogError(ex, "An error occured during applying the migration!");
             }
@@ -46,10 +52,11 @@ namespace Talabat.API
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseMiddleware<ExceptionMiddleWare>();
+                app.AddSwaggerMiddleware();
             }
-
+            app.UseStatusCodePagesWithRedirects("/errors/{0}");
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
 
             app.UseAuthorization();

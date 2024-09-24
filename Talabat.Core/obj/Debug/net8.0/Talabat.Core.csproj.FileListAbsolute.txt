@@ -10,3 +10,4 @@ E:\WebApiProject\Talabat.API.Solution\Talabat.Core\obj\Debug\net8.0\refint\Talab
 E:\WebApiProject\Talabat.API.Solution\Talabat.Core\obj\Debug\net8.0\Talabat.Core.pdb
 E:\WebApiProject\Talabat.API.Solution\Talabat.Core\obj\Debug\net8.0\ref\Talabat.Core.dll
 E:\WebApiProject\Talabat.API.Solution\Talabat.Core\obj\Debug\net8.0\Talabat.Core.csproj.AssemblyReference.cache
+E:\WebApiProject\Talabat.API.Solution\Talabat.Core\obj\Debug\net8.0\Talabat.Core.sourcelink.json
