@@ -1,6 +1,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
 using Talabat.API.Errors;
 using Talabat.API.Extensions;
 using Talabat.API.MiddleWares;
@@ -27,6 +28,11 @@ namespace Talabat.API
             builder.Services.AddDbContext<G01DbContext>(option =>
             {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+            builder.Services.AddSingleton<IConnectionMultiplexer>(option =>
+            {
+                var connection = builder.Configuration.GetConnectionString("RedisConnection");
+                return ConnectionMultiplexer.Connect(connection);
             });
             builder.Services.AddApplicationService();
             #endregion

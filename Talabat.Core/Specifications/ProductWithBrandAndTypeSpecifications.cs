@@ -9,12 +9,13 @@ namespace Talabat.Core.Specifications
 {
     public class ProductWithBrandAndTypeSpecifications : BaseSpecification<Product>
     {
-        public ProductWithBrandAndTypeSpecifications(string Sort) : base() {
+        public ProductWithBrandAndTypeSpecifications(ProductSpecParams Params) : base(P => (!Params.BrandId.HasValue || P.ProductBrandId == Params.BrandId) && (!Params.TypeId.HasValue || P.ProductTypeId == Params.TypeId))
+        {
             Includes.Add(i => i.ProductBrand);
             Includes.Add(i => i.ProductType);
-            if (!string.IsNullOrEmpty(Sort))
+            if (!string.IsNullOrEmpty(Params.Sort))
             {
-                switch (Sort)
+                switch (Params.Sort)
                 {
                     case "PriceAsc":
                         AddOrderBy(i => i.Price);
@@ -29,10 +30,16 @@ namespace Talabat.Core.Specifications
 
                 }
             }
+            else
+            {
+                AddOrderBy(i => i.Name);
+            }
+
+            ApplyPagination(Params.PageSize, Params.PageSize * (Params.PageIndex - 1));
 
         }
 
-        public ProductWithBrandAndTypeSpecifications(int id) : base(p=>p.Id == id)
+        public ProductWithBrandAndTypeSpecifications(int id) : base(p => p.Id == id)
         {
             Includes.Add(i => i.ProductBrand);
             Includes.Add(i => i.ProductType);

@@ -27,10 +27,10 @@ namespace Talabat.API.Controllers
             this.brands = brands;
         }
 
-        [HttpGet("{Sort}")]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts(string Sort)
+        [HttpGet]
+        public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts([FromQuery]ProductSpecParams Params)
         {
-            var Spec = new ProductWithBrandAndTypeSpecifications(Sort);
+            var Spec = new ProductWithBrandAndTypeSpecifications(Params);
             var products = await genericRepository.GetAllWithSpecAsync(Spec);
             var MappedProduct = mapper.Map<IEnumerable<Product>, IEnumerable<ProductToReturnDto>>(products);
             //var products = await genericRepository.GetAllAsync();
@@ -39,7 +39,7 @@ namespace Talabat.API.Controllers
             return Ok(MappedProduct);
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProductById(int id)
         {
             var Spec = new ProductWithBrandAndTypeSpecifications(id);
